@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WorldScrolling : MonoBehaviour
@@ -32,7 +33,8 @@ public class WorldScrolling : MonoBehaviour
         {
             currentTilePosition = playerTilePosition;
 
-            UpdateOnTileGridPlayerPosition();
+            onTileGridPlayerPosition.x = CalculatePositionOnAxis(onTileGridPlayerPosition.x, true);
+            onTileGridPlayerPosition.y = CalculatePositionOnAxis(onTileGridPlayerPosition.y, false);
             UpdateTileOnScreen();
 
         }
@@ -40,33 +42,51 @@ public class WorldScrolling : MonoBehaviour
 
     private void UpdateTileOnScreen()
     {
-        for(int pov_x = 0; pov_x < fieldOfVisionWidth; pov_x++){
-            
+        for (int pov_x = 0; pov_x < fieldOfVisionWidth; pov_x++)
+        {
+            for (int pov_y = 0; pov_y < fieldOfVisionHeight; pov_y++)
+            {
+                int tileToUpdate_x = CalculatePositionOnAxis(playerTilePosition.x + pov_x, true);
+                int tileToUpdate_y = CalculatePositionOnAxis(playerTilePosition.y + pov_y, true);
+
+                GameObject tile = terrainTiles[tileToUpdate_x, tileToUpdate_y];
+                tile.transform.position = CalculateTilePosition(
+                    playerTilePosition.x + pov_x,
+                    playerTilePosition.y + pov_y);
+            }
         }
     }
 
-    private void UpdateOnTileGridPlayerPosition()
+    private Vector3 CalculateTilePosition(int x, int y)
     {
-        if (onTileGridPlayerPosition.x >= 0)
-        {
-            onTileGridPlayerPosition.x = playerTilePosition.x % terrainTileHorizontalCount;
+        return new Vector3(x * tileSize, y * tileSize, 0f);
+    }
 
+    private int CalculatePositionOnAxis(float currentValue, bool horizontal)
+    {
+        if (horizontal)
+        {
+            if (currentValue >= 0)
+            {
+                currentValue = currentValue % terrainTileHorizontalCount;
+            }
+            else
+            {
+                currentValue = terrainTileHorizontalCount - 1 + currentValue % terrainTileHorizontalCount;
+            }
         }
         else
         {
-            onTileGridPlayerPosition.x = terrainTileHorizontalCount -1 
-            + playerTilePosition.x % terrainTileHorizontalCount;
+            if (currentValue >= 0)
+            {
+                currentValue = currentValue % terrainTileVerticalCount;
+            }
+            else
+            {
+                currentValue = terrainTileVerticalCount - 1 + currentValue % terrainTileVerticalCount;
+            }
         }
-
-        if (onTileGridPlayerPosition.y >= 0)
-        {
-            onTileGridPlayerPosition.y = playerTilePosition.y % terrainTileVerticalCount;
-        }else{
-            onTileGridPlayerPosition.y =terrainTileVerticalCount -1 
-            + playerTilePosition.y % terrainTileVerticalCount;
-        }
-
-
+        return (int)currentValue;
     }
 
     public void Add(GameObject tileGameObject, Vector2Int tilePosition)
