@@ -25,10 +25,19 @@ public class WorldScrolling : MonoBehaviour
         terrainTiles = new GameObject[terrainTileHorizontalCount, terrainTileVerticalCount];
     }
 
+    private void Start(){
+        UpdateTileOnScreen();
+
+    }
+
     private void Update()
     {
         playerTilePosition.x = (int)(playerTransform.position.x / tileSize);
         playerTilePosition.y = (int)(playerTransform.position.y / tileSize);
+
+        playerTilePosition.x -= playerTransform.position.x < 0 ? 1 : 0;
+        playerTilePosition.y -= playerTransform.position.x < 0 ? 1 : 0;
+
         if (currentTilePosition != playerTilePosition)
         {
             currentTilePosition = playerTilePosition;
@@ -42,12 +51,14 @@ public class WorldScrolling : MonoBehaviour
 
     private void UpdateTileOnScreen()
     {
-        for (int pov_x = 0; pov_x < fieldOfVisionWidth; pov_x++)
+        for (int pov_x = -(fieldOfVisionWidth / 2); pov_x <= fieldOfVisionWidth / 2; pov_x++)
         {
-            for (int pov_y = 0; pov_y < fieldOfVisionHeight; pov_y++)
+            for (int pov_y = -(fieldOfVisionHeight / 2); pov_y <= fieldOfVisionHeight / 2; pov_y++)
             {
                 int tileToUpdate_x = CalculatePositionOnAxis(playerTilePosition.x + pov_x, true);
-                int tileToUpdate_y = CalculatePositionOnAxis(playerTilePosition.y + pov_y, true);
+                int tileToUpdate_y = CalculatePositionOnAxis(playerTilePosition.y + pov_y, false);
+
+
 
                 GameObject tile = terrainTiles[tileToUpdate_x, tileToUpdate_y];
                 tile.transform.position = CalculateTilePosition(
@@ -72,6 +83,7 @@ public class WorldScrolling : MonoBehaviour
             }
             else
             {
+                currentValue +=1;
                 currentValue = terrainTileHorizontalCount - 1 + currentValue % terrainTileHorizontalCount;
             }
         }
@@ -83,6 +95,7 @@ public class WorldScrolling : MonoBehaviour
             }
             else
             {
+                currentValue += 1;
                 currentValue = terrainTileVerticalCount - 1 + currentValue % terrainTileVerticalCount;
             }
         }
