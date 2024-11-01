@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a7c8e2b7edfe98444b3ba4cee405a797
+guid: 74d4186299b94af4bb9a8f62e323a4bb
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,34 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tree
+      name: chest2_0
       rect:
         serializedVersion: 2
-        x: 129
-        y: 96
-        width: 31
+        x: 1
+        y: 0
+        width: 30
         height: 32
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7b04d74f15ebaef4591551966d52a6b4
-      internalID: 1607340493
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: health
-      rect:
-        serializedVersion: 2
-        x: 2
-        y: 258
-        width: 11
-        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,8 +124,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 576929b69db6fd9438d71726fc3fcce5
-      internalID: -924889664
+      spriteID: eb991ab75bfa92547b2cb750a123d2d6
+      internalID: -1757916454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chest2_1
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 0
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3d0f3f90dbbe194a935da3821a31bc9
+      internalID: -924186324
       vertices: []
       indices: 
       edges: []
@@ -162,8 +162,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Tree: 1607340493
-      health: -924889664
+      chest2_0: -1757916454
+      chest2_1: -924186324
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

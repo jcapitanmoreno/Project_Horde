@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Character : MonoBehaviour
@@ -7,6 +8,11 @@ public class Character : MonoBehaviour
     public int maxHP = 1000;
     public int currentHP = 1000;
     [SerializeField] StatusBar hpBar;
+
+    private void Start()
+    {
+        hpBar.SetState(currentHP, maxHP);
+    }
 
 
     public void TakeDamage(int damage)
@@ -29,6 +35,7 @@ public class Character : MonoBehaviour
         {
             currentHP = maxHP;
         }
+        hpBar.SetState(currentHP, maxHP);
     }
 
 }
