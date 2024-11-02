@@ -16,6 +16,8 @@ public class Enemy : MonoBehaviour, IDamageAble
     [SerializeField] int hp = 999;
     [SerializeField] int damage = 1;
 
+    [SerializeField] int experience_reward = 400;
+
     private void Awake()
     {
         rgdbd2d = GetComponent<Rigidbody2D>();
@@ -23,8 +25,8 @@ public class Enemy : MonoBehaviour, IDamageAble
 
     public void SetTarget(GameObject target)
     {
-targetGameObject = target;
-targetDestination = target.transform;
+        targetGameObject = target;
+        targetDestination = target.transform;
     }
 
     private void FixedUpdate()
@@ -57,6 +59,7 @@ targetDestination = target.transform;
 
         if (hp < 1)
         {
+            targetGameObject.GetComponent<Level>().AddExperience(experience_reward);
             Destroy(gameObject);
         }
     }
