@@ -25,7 +25,8 @@ public class WorldScrolling : MonoBehaviour
         terrainTiles = new GameObject[terrainTileHorizontalCount, terrainTileVerticalCount];
     }
 
-    private void Start(){
+    private void Start()
+    {
         UpdateTileOnScreen();
 
     }
@@ -61,9 +62,16 @@ public class WorldScrolling : MonoBehaviour
 
 
                 GameObject tile = terrainTiles[tileToUpdate_x, tileToUpdate_y];
-                tile.transform.position = CalculateTilePosition(
+                Vector3 newPosition = CalculateTilePosition(
                     playerTilePosition.x + pov_x,
                     playerTilePosition.y + pov_y);
+
+                if (newPosition != tile.transform.position)
+                {
+                    tile.transform.position = newPosition;
+                    terrainTiles[tileToUpdate_x, tileToUpdate_y].GetComponent<TerrainTile>().Spawn();
+                }
+
             }
         }
     }
@@ -83,7 +91,7 @@ public class WorldScrolling : MonoBehaviour
             }
             else
             {
-                currentValue +=1;
+                currentValue += 1;
                 currentValue = terrainTileHorizontalCount - 1 + currentValue % terrainTileHorizontalCount;
             }
         }

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7629366252734340517}
   - component: {fileID: 6778898337129663020}
   - component: {fileID: 748974557085431093}
+  - component: {fileID: -7140017033276191}
   m_Layer: 0
   m_Name: EnemyBat
   m_TagString: Untagged
@@ -212,3 +213,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropItemPrefab: {fileID: 711329879743775360, guid: 7caae6d1918c4fc4d94b69ecfcf5b613, type: 3}
   chance: 0.15
+--- !u!114 &-7140017033276191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7646144815074317104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b662cb54ec4f20f4e832f807446df944, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
