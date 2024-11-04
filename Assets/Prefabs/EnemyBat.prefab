@@ -195,9 +195,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f25fd33a46ae5a479e3754a6be8b0d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4
-  hp: 1
-  damage: 1
+  speed: 4.55
+  hp: 5
+  damage: 10
   experience_reward: 400
 --- !u!114 &748974557085431093
 MonoBehaviour:
@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropItemPrefab: {fileID: 711329879743775360, guid: 7caae6d1918c4fc4d94b69ecfcf5b613, type: 3}
-  chance: 0.15
+  chance: 0.257
 --- !u!114 &-7140017033276191
 MonoBehaviour:
   m_ObjectHideFlags: 0

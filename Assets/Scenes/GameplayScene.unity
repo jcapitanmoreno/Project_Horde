@@ -5933,7 +5933,7 @@ MonoBehaviour:
   leftWhipObject: {fileID: 1158819871}
   rightWhipObject: {fileID: 1511592428}
   whipAttackSize: {x: 4, y: 2}
-  whipDamage: 1
+  whipDamage: 3
 --- !u!1001 &1523775267
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6921,7 +6921,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy: {fileID: 7646144815074317104, guid: 78ca8ea98362ba54b93120e823d6a27c, type: 3}
   spawnArea: {x: 15, y: 8}
-  spawnTimer: 2
+  spawnTimer: 0.8
   player: {fileID: 229677116}
 --- !u!4 &1763672833
 Transform:
